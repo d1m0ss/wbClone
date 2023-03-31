@@ -99,6 +99,7 @@
   width: 20px;
   height: 20px;
   background: black;
+  border: 1px solid grey;
 }
 @media screen and (max-width: 480px) {
   .slider__container {
