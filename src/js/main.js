@@ -1,16 +1,25 @@
+import { swipeSlide } from "./modules/swipeSlide.js";
+
 const sliderContainer = document.querySelector(".slider__container");
 const sliderLeftBtn = document.querySelector(".slider__left-button");
 const sliderRightBtn = document.querySelector(".slider__right-button");
 const sliderDots = document.querySelector(".slider__dots");
 
 let currentSlide = 0;
+let autoInterval;
+const elementsArray = [
+  sliderContainer,
+  sliderLeftBtn,
+  sliderRightBtn,
+  sliderDots,
+];
 
 sliderRightBtn.addEventListener("click", () => {
   currentSlide += 1;
   if (currentSlide > sliderContainer.childElementCount - 1) {
     currentSlide = 0;
   }
-  swipeSlide(`${currentSlide}`);
+  swipeSlide(currentSlide);
 });
 
 sliderLeftBtn.addEventListener("click", () => {
@@ -18,27 +27,40 @@ sliderLeftBtn.addEventListener("click", () => {
   if (currentSlide < 0) {
     currentSlide = sliderContainer.childElementCount - 1;
   }
-  swipeSlide(`${currentSlide}`);
+  swipeSlide(currentSlide);
 });
 
 sliderDots.addEventListener("click", (event) => {
   const target = event.target;
   if (!target.classList.contains("slider__dot")) return;
-  const targetedDot = target.dataset.dotnum - 1;
-  currentSlide = targetedDot;
-  swipeSlide(targetedDot);
+  currentSlide = target.dataset.dotnum - 1;
+  swipeSlide(currentSlide);
 });
 
-function swipeSlide(quantity) {
-  sliderContainer.style.transform = `translateX(-${quantity * 100}%)`;
-  slideDotCheck(quantity)
+sliderContainer.addEventListener("mouseout", () => {
+  autoSlider();
+});
+
+sliderContainer.addEventListener("mouseover", () => {
+  clearInterval(autoInterval);
+});
+
+sliderAddElementsStop(elementsArray);
+
+function sliderAddElementsStop(elements) {
+  for (const element of elements) {
+    element.addEventListener("mouseover", () => {
+      clearInterval(autoInterval);
+    });
+  }
 }
 
-function slideDotCheck(slide) {
-  const currSlideDot = sliderDots.children[slide];
-  const dots = Array.from(sliderDots.children);
-  dots.forEach((dot) => {
-    dot.classList.remove("active-dot");
-  });
-  currSlideDot.classList.add("active-dot");
+function autoSlider() {
+  autoInterval = setInterval(() => {
+    currentSlide === 4 ? (currentSlide = 0) : currentSlide++;
+    console.log(currentSlide);
+    swipeSlide(currentSlide);
+  }, 3000);
 }
+
+autoSlider();
