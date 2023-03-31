@@ -58,7 +58,6 @@ function sliderAddElementsStop(elements) {
 function autoSlider() {
   autoInterval = setInterval(() => {
     currentSlide === 4 ? (currentSlide = 0) : currentSlide++;
-    console.log(currentSlide);
     swipeSlide(currentSlide);
   }, 3000);
 }
