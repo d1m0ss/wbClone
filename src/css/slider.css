@@ -79,6 +79,14 @@
 .slider__right-button {
   right: 15px;
 }
+.slider__left-button,
+.slider__right-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  color: white;
+}
 .slider__dots-wrapper {
   width: max-content;
   margin: auto;
