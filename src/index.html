@@ -1,19 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
     <title>Wildberries</title>
-</head>
-<body>
+ </head>
+ <body>
     <div class="wrapper">
-        <div class="main-container">
-            <div class="body">
-                <header class="header"></header><!--Шапка для Игоря-->
-                <main class="main"></main><!--main для Димы-->
-                <footer class="footer">
+      <div class="main-container">
+        <div class="body">
+          <header class="header">
+            <div class="header__logo"><a href="#" alt="logo">Wildberries</a></div>
+            <div class="header__search"><input type="search" name="" id="" placeholder="Поиск..."></div>
+            <div class="header__basket"><button id="open_pop_up">Корзина</button></div>
+          </header>
+          <main class="main">
+            <section class="container">
+              <section class="slider">
+                <article class="slider__buttons">
+                  <article class="slider__left-button">←</article>
+                  <article class="slider__right-button">→</article>
+                </article>
+                <article class="slider__container">
+                  <div class="slider__item">
+                    <img src="./imges/slide-1.jpg" alt="" />
+                  </div>
+                  <div class="slider__item">
+                    <img src="./imges/slide-2.jpeg" alt="" />
+                  </div>
+                  <div class="slider__item">
+                    <img src="./imges/sdlie-3.jpeg" alt="" />
+                  </div>
+                  <div class="slider__item">
+                    <img src="./imges/slide-4.jpg" alt="" />
+                  </div>
+                  <div class="slider__item">
+                    <img src="./imges/slide-5.jpg" alt="" />
+                  </div>
+                </article>
+                <article class="slider__dots-wrapper">
+                  <article class="slider__dots">
+                    <span class="slider__dot active-dot" data-dotnum="1"></span>
+                    <span class="slider__dot" data-dotnum="2"><span></span></span>
+                    <span class="slider__dot" data-dotnum="3"></span>
+                    <span class="slider__dot" data-dotnum="4"></span>
+                    <span class="slider__dot" data-dotnum="5"></span>
+                  </article>
+                </article>
+              </section>
+            </section>
+          </main>
+          <footer class="footer">
                     <div class="content">
                         <h1 class="hit-product">Хиты продаж</h1>
                         <div class="products">
@@ -109,11 +148,13 @@
                             </section>
                         </div>
                     </div>
-                </footer><!--подвал для Насти-->    
-             </div>
-        </div>
+                </footer>
+            </div>
+      </div>
     </div>
-    <div class="modal"></div><!--Модальное окно для Расула-->  
+    
+  
+
     <script src="js/main.js" type="module"></script>
-</body>
+  </body>
 </html>
