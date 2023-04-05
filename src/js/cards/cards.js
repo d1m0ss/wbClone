@@ -2,6 +2,7 @@ export function cards() {
   const cardsWrapper = document.querySelector(".products");
 
   cardsWrapper.addEventListener("click", bigView);
+  cardsWrapper.addEventListener("click", addInBucket);
 
   function bigView(event) {
     const target = event.target;
@@ -19,5 +20,15 @@ export function cards() {
     bigViewWraper.append(cardImg);
     bigViewWraper.append(closeImg);
     cardsWrapper.append(bigViewWraper);
+  }
+
+  function addInBucket(event) {
+    const target = event.target;
+    if (!target.classList.contains("like-product")) return;
+    const card = target.parentNode.parentNode.parentNode;
+    const bucketItemImg = card.querySelector('.product-img')
+    const bucketItemName = card.querySelector('.product-title')
+    const bucketItemPrice = card.querySelector('.price-new')
+    const bucketItemSale = card.querySelector('.price-old')
   }
 }
