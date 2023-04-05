@@ -122,3 +122,31 @@
   box-shadow: 0 0 10px black;
   border-radius: 20px 20px 20px 20px;
 }
+
+.big-viewe {
+  width: max-content;
+  position: relativ;
+  z-index: 10;
+}
+
+.close-img {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: white;
+  text-shadow: 2px 2px black;
+  font-size: 130%;
+  cursor: pointer;
+}
+
+.card-img {
+  position: absolute;
+  /* bottom: 40%; */
+  right: 0;
+  left: 0;
+  top: 0;
+  margin: auto;
+  border-radius: 10px;
+  width: 100%;
+  box-shadow: 0 0 20px 10px black;
+}

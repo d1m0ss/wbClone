@@ -5,12 +5,19 @@ export function cards() {
 
   function bigView(event) {
     const target = event.target;
-    if (!target.classList.contains("product-viewing")) {
-      return;
-    }
+    if (!target.classList.contains("product-viewing")) return;
     const cardImg = target.previousElementSibling.cloneNode(true);
-    cardImg.style =
-      "position: absolute; top: 0px; left: 0px; right: 0; bottom: 0; margin: auto; border-radius: 20px; height: 100%; z-index: 10;";
-    cardsWrapper.append(cardImg);
+    const closeImg = document.createElement("span");
+    const bigViewWraper = document.createElement("div");
+    closeImg.innerText = "Закрыть";
+    bigViewWraper.className = "big-viewe";
+    closeImg.className = "close-img";
+    cardImg.className = "card-img";
+    closeImg.addEventListener("click", () => {
+      bigViewWraper.remove();
+    });
+    bigViewWraper.append(closeImg);
+    bigViewWraper.append(cardImg);
+    document.querySelector(".content").append(bigViewWraper);
   }
 }
