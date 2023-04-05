@@ -16,8 +16,8 @@ export function cards() {
     closeImg.addEventListener("click", () => {
       bigViewWraper.remove();
     });
-    bigViewWraper.append(closeImg);
     bigViewWraper.append(cardImg);
-    document.querySelector(".content").append(bigViewWraper);
+    bigViewWraper.append(closeImg);
+    cardsWrapper.append(bigViewWraper);
   }
 }
