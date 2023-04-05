@@ -1,4 +1,5 @@
 import { swipeSlide } from "./modules/swipeSlide.js";
+
 export function slider() {
   const sliderContainer = document.querySelector(".slider__container");
   const sliderSlides = sliderContainer.querySelectorAll(".slider__item");
@@ -23,7 +24,7 @@ export function slider() {
     const dot = document.createElement("span");
     dot.className = "slider__dot";
     dot.dataset.dotnum = slideNum;
-    if (dot.dataset.dotnum === '1') {
+    if (dot.dataset.dotnum === "1") {
       dot.classList.add("active-dot");
     }
     sliderDots.append(dot);
@@ -36,14 +37,7 @@ export function slider() {
 
   sliderLeftBtn.addEventListener("click", swipeLeft);
 
-  sliderDots.addEventListener("click", (event) => {
-    let side;
-    const target = event.target;
-    if (!target.classList.contains("slider__dot")) return;
-    side = currentSlide < target.dataset.dotnum ? "right" : "left";
-    currentSlide = target.dataset.dotnum - 1;
-    swipeSlide(currentSlide, sliderSlides, slideDelay, side);
-  });
+  sliderDots.addEventListener("click", dotMove);
 
   sliderContainer.addEventListener("mouseout", () => {
     autoSlider();
@@ -52,6 +46,23 @@ export function slider() {
   sliderContainer.addEventListener("mouseover", () => {
     clearInterval(autoInterval);
   });
+
+  function dotMove(event) {
+    let side;
+    const target = event.target;
+    if (
+      !target.classList.contains("slider__dot") ||
+      target.classList.contains("active-dot")
+    )
+      return;
+    sliderDots.removeEventListener("click", dotMove);
+    side = currentSlide < target.dataset.dotnum ? "right" : "left";
+    currentSlide = target.dataset.dotnum - 1;
+    swipeSlide(currentSlide, sliderSlides, slideDelay, side);
+    setTimeout(() => {
+      sliderDots.addEventListener("click", dotMove);
+    }, slideDelay);
+  }
 
   function createCustomElement(tagName, options) {
     return Object.assign(document.createElement(tagName), options);
