@@ -93,6 +93,7 @@
 }
 
 .pop_up-text-wrap {
+  text-align: center;
   margin: auto;
 }
 
@@ -107,4 +108,9 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.pop_up-close-item {
+  cursor: pointer;
+  padding: 10px;
 }
