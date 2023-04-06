@@ -8,11 +8,11 @@ export function removeBucketItem(event) {
 
   lsData.splice(itemIndex, 1);
   if (!lsData.length) {
-    console.log("null");
     localStorage.clear("popUpItem");
   } else {
     localStorage.setItem("popUpItem", JSON.stringify(lsData));
   }
+  
   target.remove();
   priceCheck();
 }
