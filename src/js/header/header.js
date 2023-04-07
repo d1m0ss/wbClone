@@ -1,11 +1,12 @@
+import { addInBucket } from "../cards/modules/addInBucket.js";
+
 export function header() {
   const header = document.querySelector(".header");
   const popUp = document.querySelector(".pop_up");
   const input = document.querySelector(".header__input");
-
-  header.addEventListener("click", bucketOpen);
-  popUp.addEventListener("click", bucketClose);
-  input.addEventListener("input", search);
+  const products = document.querySelector(".products").cloneNode(true);
+  const names = products.querySelectorAll(".product-title");
+  const list = document.querySelector(".header__search-popup");
 
   function bucketOpen(event) {
     const target = event.target;
@@ -28,28 +29,42 @@ export function header() {
 
   function search() {
     let inputValue = this.value.trim().toLocaleLowerCase();
-    const products = document.querySelector(".products");
-    const names = products.querySelectorAll(".product-title");
-    const list = document.querySelector(".header__search-popup");
-    let card;
 
     input.style.borderRadius = "10px 10px 0 0";
     input.parentElement.style.borderRadius = "10px 10px 0 0";
+    list.style.width = "100%";
 
     list.childNodes.forEach((item) => {
       item.remove();
     });
+
     names.forEach((cardTitle) => {
       if (cardTitle.textContent.toLocaleLowerCase().search(inputValue) !== -1) {
-        card = cardTitle.closest(".product").cloneNode(true);
+        const card = cardTitle.closest(".product");
         card.classList.add("find-product");
+        card.addEventListener("click", addInBucket);
         list.append(card);
-      }
-      if(input.value === ''){
-        list.childNodes.forEach((item) => {
-          item.remove();
-        });
       }
     });
   }
+
+  function searchBlur(e) {
+    if (
+      !e.target.closest(".find-product") &&
+      !e.target.closest(".header__search")
+    ) {
+      for (let i = list.childElementCount - 1; i > -1; i--) {
+        list.children[i].remove();
+      }
+      input.style.borderRadius = "10px";
+      input.parentElement.style.borderRadius = "10px";
+      list.style.width = "0px";
+    }
+  }
+
+  header.addEventListener("click", bucketOpen);
+  popUp.addEventListener("click", bucketClose);
+  input.addEventListener("input", search);
+  input.addEventListener("focus", search);
+  document.addEventListener("click", searchBlur);
 }

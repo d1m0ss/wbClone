@@ -109,11 +109,13 @@
 
 .header__search-popup {
   position: absolute;
-  width: 100%;
+  width: 0%;
   top: 100%;
   background-color: #f8cecc;
   border: 2px solid #cb8a87;
   border-top: 0;
+  border-radius: 0 0 10px 10px;
+  overflow: hidden;
   box-sizing: content-box;
   z-index: 10;
 }

@@ -43,8 +43,6 @@
 
 .product-img {
   max-width: 100%;
-  border-radius: 20px 20px 0 0;
-  min-height: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -96,6 +94,7 @@
   gap: 20px;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .price-new {
@@ -110,6 +109,7 @@
 }
 .product-title {
   margin-bottom: 10px;
+  flex-shrink: 0;
 }
 
 .product-viewed {
@@ -153,9 +153,31 @@
   object-fit: cover;
 }
 
-.find-product{
+.find-product {
   display: flex;
   max-width: 100%;
   justify-content: space-between;
+  overflow: hidden;
+  max-height: 100px;
+  margin-bottom: 1px;
   align-items: center;
+  box-shadow: none;
+  border-radius: 0;
+  border: 1px solid black;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.find-product .product-section {
+  margin: 0;
+  flex-basis: 70px;
+}
+
+.find-product .product-section .product-viewing,
+.find-product .product-section .product-info {
+  display: none;
+}
+
+.find-product .product-section .product-img {
+  border-radius: 0;
 }
