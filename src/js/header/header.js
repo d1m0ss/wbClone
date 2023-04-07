@@ -30,6 +30,16 @@ export function header() {
   function search() {
     let inputValue = this.value.trim().toLocaleLowerCase();
 
+    if (inputValue === "") {
+      for (let i = list.childElementCount - 1; i > -1; i--) {
+        list.children[i].remove();
+      }
+      input.style.borderRadius = "10px";
+      input.parentElement.style.borderRadius = "10px";
+      list.style.width = "0px";
+      return;
+    }
+
     input.style.borderRadius = "10px 10px 0 0";
     input.parentElement.style.borderRadius = "10px 10px 0 0";
     list.style.width = "100%";
@@ -42,7 +52,6 @@ export function header() {
       if (cardTitle.textContent.toLocaleLowerCase().search(inputValue) !== -1) {
         const card = cardTitle.closest(".product");
         card.classList.add("find-product");
-        card.addEventListener("click", addInBucket);
         list.append(card);
       }
     });
