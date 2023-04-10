@@ -16,7 +16,11 @@ export function bigView(event) {
   bigViewWraper.className = "big-viewe";
   cardImg.className = "card-img";
   bigViewWraper.addEventListener("click", (e) => {
-    if (e.target.classList.contains("card-img")) return;
+    if (
+      e.target.classList.contains("card-img") ||
+      e.target.classList.contains("product-description")
+    )
+      return;
     bigViewWraper.remove();
   });
   bigViewWraper.append(cardImg, description);
