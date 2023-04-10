@@ -26,7 +26,7 @@
   min-height: 50px;
   width: 100%;
   font-size: 18px;
-  user-select: none;
+  webkit-user-select: none;
   text-decoration: none;
   color: black;
 }
