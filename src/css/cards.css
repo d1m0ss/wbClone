@@ -216,7 +216,12 @@ body {
   border-radius: 0;
   border: 1px solid black;
   gap: 10px;
-  cursor: pointer;
+  cursor: default;
+  transition: all 0.5s;
+}
+
+.find-product:hover {
+  background: darksalmon;
 }
 
 .find-product .product-section {
