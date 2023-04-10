@@ -9,7 +9,7 @@ if (localStorage.getItem("popUpItem")) {
 
 export function addInBucket(event) {
   const target = event.target;
-  if (!target.classList.contains("like-product")) return;
+  if (!target.classList.contains("product-buy")) return;
   createPopUpItem(target);
 }
 

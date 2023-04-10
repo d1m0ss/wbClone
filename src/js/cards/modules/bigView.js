@@ -1,18 +1,24 @@
 export function bigView(event) {
   const target = event.target;
   if (!target.classList.contains("product-viewing")) return;
-  const cardsWrapper = document.querySelector(".products");
+  const cardsWrapper = document.querySelector("body");
+  const card = target.closest(".product").cloneNode(true);
   const cardImg = target.previousElementSibling.cloneNode(true);
-  const closeImg = document.createElement("span");
   const bigViewWraper = document.createElement("div");
-  closeImg.innerText = "Закрыть";
+  const description = card.querySelector(".product-description");
+  let imgSrcArr = cardImg.src.split("/");
+
+  console.log(description);
+
+  imgSrcArr[imgSrcArr.length - 1] = `in${card.dataset.pordtype}.jpg`;
+  cardImg.src = imgSrcArr.join("/");
+
   bigViewWraper.className = "big-viewe";
-  closeImg.className = "close-img";
   cardImg.className = "card-img";
-  closeImg.addEventListener("click", () => {
+  bigViewWraper.addEventListener("click", (e) => {
+    if (e.target.classList.contains("card-img")) return;
     bigViewWraper.remove();
   });
-  bigViewWraper.append(cardImg);
-  bigViewWraper.append(closeImg);
+  bigViewWraper.append(cardImg, description);
   cardsWrapper.append(bigViewWraper);
 }

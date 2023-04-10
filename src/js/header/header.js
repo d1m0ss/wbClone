@@ -51,6 +51,8 @@ export function header() {
     names.forEach((cardTitle) => {
       if (cardTitle.textContent.toLocaleLowerCase().search(inputValue) !== -1) {
         const card = cardTitle.closest(".product");
+        const buyBtn = card.querySelector(".product-buy");
+        buyBtn.addEventListener("click", addInBucket);
         card.classList.add("find-product");
         list.append(card);
       }
